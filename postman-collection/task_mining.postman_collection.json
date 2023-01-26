@@ -1,2 +1,231 @@
 {
+	"info": {
+		"_postman_id": "b410501a-e2e5-4f19-8987-058acb333003",
+		"name": "task-mining-apis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "[GET] getAllTasks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Celonis-Auth",
+						"value": "totally_secret",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/tasks/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] createTask",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Celonis-Auth",
+						"value": "totally_secret",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"cd001\",\n    \"x\" : 10,\n    \"y\": 150\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/tasks",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] findByTaskId",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Celonis-Auth",
+						"value": "totally_secret",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/tasks/79442248-9e2f-4bbf-9735-9696b0e2dc69",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks",
+						"79442248-9e2f-4bbf-9735-9696b0e2dc69"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[PUT] updateByTaskId",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Celonis-Auth",
+						"value": "totally_secret",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"cd002\",\n    \"x\" : 25,\n    \"y\": 100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/tasks/26360e83-cf66-41e6-ad97-55a060c407f3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks",
+						"26360e83-cf66-41e6-ad97-55a060c407f3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[DELETE] deleteByTaskId",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Celonis-Auth",
+						"value": "totally_secret",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/tasks/48150a4a-8c84-4efe-99cb-9bc33751085d",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks",
+						"48150a4a-8c84-4efe-99cb-9bc33751085d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] executeTask",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Celonis-Auth",
+						"value": "totally_secret",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/tasks/44d1026a-ae6e-4e37-ad27-846d0069682a/execute",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks",
+						"44d1026a-ae6e-4e37-ad27-846d0069682a",
+						"execute"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] getResultOfExecutedTask",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Celonis-Auth",
+						"type": "text",
+						"value": "totally_secret"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/tasks/44d1026a-ae6e-4e37-ad27-846d0069682a/result",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks",
+						"44d1026a-ae6e-4e37-ad27-846d0069682a",
+						"result"
+					]
+				}
+			},
+			"response": []
+		}
+	]
 }
