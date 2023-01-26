@@ -30,7 +30,7 @@ public class TaskController {
         return taskService.listTasks();
     }
 
-    @PostMapping("/")
+    @RequestMapping(method = RequestMethod.POST)
     public ProjectGenerationTask createTask(@RequestBody @Valid ProjectGenerationTask projectGenerationTask) {
         return taskService.createTask(projectGenerationTask);
     }
@@ -40,7 +40,7 @@ public class TaskController {
         return taskService.getTask(taskId);
     }
 
-    @PutMapping("/{taskId}")
+    @RequestMapping(value = "/{taskId}", method = RequestMethod.PUT)
     public ProjectGenerationTask updateTask(@PathVariable String taskId,
                                             @RequestBody @Valid ProjectGenerationTask projectGenerationTask) {
         return taskService.update(taskId, projectGenerationTask);
