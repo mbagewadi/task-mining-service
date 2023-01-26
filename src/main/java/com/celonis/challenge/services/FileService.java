@@ -4,6 +4,7 @@ import com.celonis.challenge.exceptions.InternalException;
 import com.celonis.challenge.model.ProjectGenerationTask;
 import com.celonis.challenge.model.ProjectGenerationTaskRepository;
 import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,15 +18,11 @@ import java.net.URL;
 @Component
 public class FileService {
 
-    private final TaskService taskService;
+    @Autowired
+    private TaskService taskService;
 
-    private final ProjectGenerationTaskRepository projectGenerationTaskRepository;
-
-    public FileService(TaskService taskService,
-                       ProjectGenerationTaskRepository projectGenerationTaskRepository) {
-        this.taskService = taskService;
-        this.projectGenerationTaskRepository = projectGenerationTaskRepository;
-    }
+    @Autowired
+    private ProjectGenerationTaskRepository projectGenerationTaskRepository;
 
     public ResponseEntity<FileSystemResource> getTaskResult(String taskId) {
         ProjectGenerationTask projectGenerationTask = taskService.getTask(taskId);

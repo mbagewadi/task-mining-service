@@ -4,6 +4,8 @@ import com.celonis.challenge.exceptions.InternalException;
 import com.celonis.challenge.exceptions.NotFoundException;
 import com.celonis.challenge.model.ProjectGenerationTask;
 import com.celonis.challenge.model.ProjectGenerationTaskRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.URL;
@@ -14,15 +16,11 @@ import java.util.Optional;
 @Service
 public class TaskService {
 
-    private final ProjectGenerationTaskRepository projectGenerationTaskRepository;
+    @Autowired
+    private ProjectGenerationTaskRepository projectGenerationTaskRepository;
 
-    private final FileService fileService;
-    
-    public TaskService(ProjectGenerationTaskRepository projectGenerationTaskRepository,
-                       FileService fileService) {
-        this.projectGenerationTaskRepository = projectGenerationTaskRepository;
-        this.fileService = fileService;
-    }
+    @Autowired
+    private FileService fileService;
 
     public List<ProjectGenerationTask> listTasks() {
         return projectGenerationTaskRepository.findAll();
