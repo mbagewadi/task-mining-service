@@ -39,7 +39,7 @@ Here I am using simple one i.e. go and execute the `main` method in the `com.cel
 
 Note: As we are using IDE, it will automatically build when you run the application or else use this command `mvn clean install` to build application
 
-After execution completed, you can download the postman collection attached [HERE](postman-collection/task_mining.postman_collection.json) and test all the APIs locally.
+After execution completed, you can download the postman collection attached [HERE](postman-collection/task-mining-apis.postman_collection.json) and test all the APIs locally.
 
 ## Copyright
 Celonis information on What is Task Mining (https://www.celonis.com/process-mining/what-is-task-mining/)
