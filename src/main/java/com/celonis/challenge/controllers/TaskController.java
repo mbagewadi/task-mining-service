@@ -1,5 +1,7 @@
 package com.celonis.challenge.controllers;
 
+import com.celonis.challenge.model.CounterTask;
+import com.celonis.challenge.model.ExecutionState;
 import com.celonis.challenge.model.ProjectGenerationTask;
 import com.celonis.challenge.services.FileService;
 import com.celonis.challenge.services.TaskService;
@@ -61,6 +63,22 @@ public class TaskController {
     @GetMapping("/{taskId}/result")
     public ResponseEntity<FileSystemResource> getResult(@PathVariable String taskId) {
         return fileService.getTaskResult(taskId);
+    }
+
+    @PostMapping("/counter")
+    public CounterTask createCounterTask(@RequestBody @Valid CounterTask counterTask) {
+        return (CounterTask) taskService.createTask(counterTask);
+    }
+
+    @GetMapping("/{taskId}/progress")
+    public ExecutionState getStateOfTaskExecution(@PathVariable String taskId) {
+        return taskService.getStateOfTaskExecution(taskId);
+    }
+
+    @PostMapping("/{taskId}/cancel")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void cancelTaskExecution(@PathVariable String taskId) {
+        taskService.cancelTaskExecution(taskId);
     }
 
 }
