@@ -2,37 +2,54 @@ package com.celonis.challenge.controllers;
 
 import com.celonis.challenge.exceptions.NotAuthorizedException;
 import com.celonis.challenge.exceptions.NotFoundException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.log4j.Log4j2;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
+@Log4j2
 public class ErrorController {
-
-    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NotFoundException.class)
-    public String handleNotFound() {
-        logger.warn("Entity not found");
-        return "Not found";
+    public ErrorResponse handleNotFound(NotFoundException e) {
+        log.warn("Entity not found : {}", e.getMessage());
+        return new ErrorResponse("Not found", e.getMessage());
     }
 
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler(NotAuthorizedException.class)
-    public String handleNotAuthorized() {
-        logger.warn("Not authorized");
-        return "Not authorized";
+    public ErrorResponse handleNotAuthorized(NotAuthorizedException e) {
+        log.warn("Not authorized : {}", e.getMessage());
+        return new ErrorResponse("Not authorized", e.getMessage());
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
-    public String handleInternalError(Exception e) {
-        logger.error("Unhandled Exception in Controller", e);
-        return "Internal error";
+    public ErrorResponse handleInternalError(Exception e) {
+        log.error("Unhandled Exception in Controller", e);
+        return new ErrorResponse("Internal error", e.getMessage());
     }
 
+    private static class ErrorResponse {
+
+        private String error;
+        private String message;
+
+        ErrorResponse(String error, String message) {
+            this.error = error;
+            this.message = message;
+        }
+
+        public String getError() {
+            return error;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+    }
 }
