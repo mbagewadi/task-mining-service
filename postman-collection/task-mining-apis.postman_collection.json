@@ -286,32 +286,6 @@
 			"response": []
 		},
 		{
-			"name": "[GET] findStateOfTaskExecutionById",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Celonis-Auth",
-						"value": "{{SECRET}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{API-ENDPOINT-URL}}/api/tasks/{{counterTaskId}}/progress",
-					"host": [
-						"{{API-ENDPOINT-URL}}"
-					],
-					"path": [
-						"api",
-						"tasks",
-						"{{counterTaskId}}",
-						"progress"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "[POST] cancelTaskExecutionById",
 			"request": {
 				"method": "POST",
@@ -341,6 +315,32 @@
 						"tasks",
 						"{{counterTaskId}}",
 						"cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] findStateOfTaskExecutionById",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Celonis-Auth",
+						"value": "{{SECRET}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API-ENDPOINT-URL}}/api/tasks/{{counterTaskId}}/progress",
+					"host": [
+						"{{API-ENDPOINT-URL}}"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"{{counterTaskId}}",
+						"progress"
 					]
 				}
 			},
