@@ -12,16 +12,15 @@
 				"header": [
 					{
 						"key": "Celonis-Auth",
-						"value": "totally_secret",
+						"value": "{{SECRET}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "localhost:8080/api/tasks/",
+					"raw": "{{API-ENDPOINT-URL}}/api/tasks/",
 					"host": [
-						"localhost"
+						"{{API-ENDPOINT-URL}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"tasks",
@@ -33,12 +32,32 @@
 		},
 		{
 			"name": "[POST] createTask",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"taskId\", pm.response.json().id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Celonis-Auth",
-						"value": "totally_secret",
+						"value": "{{SECRET}}",
 						"type": "text"
 					}
 				],
@@ -52,11 +71,10 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/tasks",
+					"raw": "{{API-ENDPOINT-URL}}/api/tasks",
 					"host": [
-						"localhost"
+						"{{API-ENDPOINT-URL}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"tasks"
@@ -72,20 +90,19 @@
 				"header": [
 					{
 						"key": "Celonis-Auth",
-						"value": "totally_secret",
+						"value": "{{SECRET}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "localhost:8080/api/tasks/83b9f347-5c3c-4f67-9209-8167268855c9",
+					"raw": "{{API-ENDPOINT-URL}}/api/tasks/{{taskId}}",
 					"host": [
-						"localhost"
+						"{{API-ENDPOINT-URL}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"tasks",
-						"83b9f347-5c3c-4f67-9209-8167268855c9"
+						"{{taskId}}"
 					]
 				}
 			},
@@ -98,13 +115,13 @@
 				"header": [
 					{
 						"key": "Celonis-Auth",
-						"value": "totally_secret",
+						"value": "{{SECRET}}",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\" : \"Task_02\"\n}",
+					"raw": "{\n    \"name\" : \"Task_03\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -112,15 +129,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/tasks/a714af1d-ecbc-4c58-8a05-bdaa7cb63793",
+					"raw": "{{API-ENDPOINT-URL}}/api/tasks/{{taskId}}",
 					"host": [
-						"localhost"
+						"{{API-ENDPOINT-URL}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"tasks",
-						"a714af1d-ecbc-4c58-8a05-bdaa7cb63793"
+						"{{taskId}}"
 					]
 				}
 			},
@@ -133,20 +149,19 @@
 				"header": [
 					{
 						"key": "Celonis-Auth",
-						"value": "totally_secret",
+						"value": "{{SECRET}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "localhost:8080/api/tasks/a714af1d-ecbc-4c58-8a05-bdaa7cb63793",
+					"raw": "{{API-ENDPOINT-URL}}/api/tasks/{{taskId}}",
 					"host": [
-						"localhost"
+						"{{API-ENDPOINT-URL}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"tasks",
-						"a714af1d-ecbc-4c58-8a05-bdaa7cb63793"
+						"{{taskId}}"
 					]
 				}
 			},
@@ -159,7 +174,7 @@
 				"header": [
 					{
 						"key": "Celonis-Auth",
-						"value": "totally_secret",
+						"value": "{{SECRET}}",
 						"type": "text"
 					}
 				],
@@ -173,15 +188,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/tasks/d638e943-a009-446e-bdcf-af9e6810bec6/execute",
+					"raw": "{{API-ENDPOINT-URL}}/api/tasks/{{taskId}}/execute",
 					"host": [
-						"localhost"
+						"{{API-ENDPOINT-URL}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"tasks",
-						"d638e943-a009-446e-bdcf-af9e6810bec6",
+						"{{taskId}}",
 						"execute"
 					]
 				}
@@ -199,7 +213,7 @@
 					{
 						"key": "Celonis-Auth",
 						"type": "text",
-						"value": "totally_secret"
+						"value": "{{SECRET}}"
 					}
 				],
 				"body": {
@@ -212,15 +226,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/tasks/fcb73a7e-0f81-4cf6-b9db-9426921760ce/result",
+					"raw": "{{API-ENDPOINT-URL}}/api/tasks/{{taskId}}/result",
 					"host": [
-						"localhost"
+						"{{API-ENDPOINT-URL}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"tasks",
-						"fcb73a7e-0f81-4cf6-b9db-9426921760ce",
+						"{{taskId}}",
 						"result"
 					]
 				}
@@ -229,12 +242,23 @@
 		},
 		{
 			"name": "[POST] createTaskWithXandYCounter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"counterTaskId\", pm.response.json().id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Celonis-Auth",
-						"value": "totally_secret",
+						"value": "{{SECRET}}",
 						"type": "text"
 					}
 				],
@@ -248,11 +272,10 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/tasks/counter",
+					"raw": "{{API-ENDPOINT-URL}}/api/tasks/counter",
 					"host": [
-						"localhost"
+						"{{API-ENDPOINT-URL}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"tasks",
@@ -269,20 +292,19 @@
 				"header": [
 					{
 						"key": "Celonis-Auth",
-						"value": "totally_secret",
+						"value": "{{SECRET}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "localhost:8080/api/tasks/0aab1bb3-da59-4da9-8941-73faa387cbfc/progress",
+					"raw": "{{API-ENDPOINT-URL}}/api/tasks/{{counterTaskId}}/progress",
 					"host": [
-						"localhost"
+						"{{API-ENDPOINT-URL}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"tasks",
-						"0aab1bb3-da59-4da9-8941-73faa387cbfc",
+						"{{counterTaskId}}",
 						"progress"
 					]
 				}
@@ -296,7 +318,7 @@
 				"header": [
 					{
 						"key": "Celonis-Auth",
-						"value": "totally_secret",
+						"value": "{{SECRET}}",
 						"type": "text"
 					}
 				],
@@ -310,15 +332,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/tasks/1039fb49-5611-4b72-8299-343eb0e30b6d/cancel",
+					"raw": "{{API-ENDPOINT-URL}}/api/tasks/{{counterTaskId}}/cancel",
 					"host": [
-						"localhost"
+						"{{API-ENDPOINT-URL}}"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"tasks",
-						"1039fb49-5611-4b72-8299-343eb0e30b6d",
+						"{{counterTaskId}}",
 						"cancel"
 					]
 				}
