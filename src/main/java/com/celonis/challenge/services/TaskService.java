@@ -11,13 +11,11 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
 
 @Service
 @Log4j2
@@ -52,7 +50,7 @@ public class TaskService {
             throw new InternalException("Task Id or Task is null or empty");
         }
         ProjectGenerationTask existing = get(taskId);
-        existing.setCreationDate(projectGenerationTask.getCreationDate());
+        //existing.setCreationDate(projectGenerationTask.getCreationDate());
         existing.setName(projectGenerationTask.getName());
         return projectGenerationTaskRepository.save(existing);
     }
